@@ -1,0 +1,23 @@
+upstream files {
+    server nginx-files:80;
+}
+
+server {
+    listen 80;
+    listen [::]:80;
+    listen 443 ssl;
+    listen [::]:443 ssl;
+
+    server_name files.pinshot.net;
+    
+    charset utf-8;
+
+    ssl_certificate /certs/files.pinshot.net_chain.pem;
+    ssl_certificate_key /certs/files.pinshot.net.key;
+    include /etc/nginx/ssl_params;
+
+    location / {
+        include /etc/nginx/proxy_params;
+        proxy_pass http://files;
+    }
+}

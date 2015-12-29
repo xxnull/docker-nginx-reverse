@@ -1,0 +1,13 @@
+# disallow empty hostnames
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    listen 443 ssl default_server;
+    listen [::]:443 ssl default_server;
+
+    ssl_certificate /certs/www.pinshot.net_chain.pem;
+    ssl_certificate_key /certs/www.pinshot.net.key;
+    include /etc/nginx/ssl_params;
+
+    return 403;
+}

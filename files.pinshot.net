@@ -1,5 +1,5 @@
 upstream files {
-    server nginx-files:80;
+    server nginx-files1:80;
 }
 
 server {

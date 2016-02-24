@@ -1,5 +1,5 @@
 upstream recipes {
-    server nginx-recipes:80;
+    server nginx-recipes1:80;
 }
 
 server {

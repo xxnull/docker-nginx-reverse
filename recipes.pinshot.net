@@ -1,0 +1,23 @@
+upstream recipes {
+    server nginx-recipes:80;
+}
+
+server {
+    listen 80;
+    listen [::]:80;
+    listen 443 ssl;
+    listen [::]:443 ssl;
+
+    server_name recipes.pinshot.net;
+
+    charset utf-8;
+    
+    ssl_certificate /certs/recipes.pinshot.net_chain.pem;
+    ssl_certificate_key /certs/recipes.pinshot.net.key;
+    include /etc/nginx/ssl_params;
+
+    location / {
+        include /etc/nginx/proxy_params;
+        proxy_pass http://recipes;
+    }
+}

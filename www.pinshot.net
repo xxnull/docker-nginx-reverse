@@ -1,5 +1,5 @@
 upstream www {
-    server nginx-www1:80;
+    server nginx-www:80;
 }
 
 server {

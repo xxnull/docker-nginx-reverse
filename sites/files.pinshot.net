@@ -3,7 +3,7 @@ upstream files {
 }
 
 server {
-    linclude /etc/nginx/ssl_listen;
+    include /etc/nginx/ssl_listen;
 
     server_name files.pinshot.net;
     

@@ -3,10 +3,7 @@ upstream files {
 }
 
 server {
-    listen 80;
-    listen [::]:80;
-    listen 443 ssl;
-    listen [::]:443 ssl;
+    linclude /etc/nginx/ssl_listen;
 
     server_name files.pinshot.net;
     

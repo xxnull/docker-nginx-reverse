@@ -7,8 +7,8 @@ server {
 
     server_name www.pinshot.net;
 
-    ssl_certificate /certs/www.pinshot.net_chain.pem;
-    ssl_certificate_key /certs/www.pinshot.net.key;
+    ssl_certificate /certs/pinshot.net_chain.pem;
+    ssl_certificate_key /certs/pinshot.net.key;
     include /etc/nginx/ssl_params;
 
     return 301 $scheme://pinshot.net$request_uri;
@@ -21,8 +21,8 @@ server {
 
     charset utf-8;
 
-    ssl_certificate /certs/www.pinshot.net_chain.pem;
-    ssl_certificate_key /certs/www.pinshot.net.key;
+    ssl_certificate /certs/pinshot.net_chain.pem;
+    ssl_certificate_key /certs/pinshot.net.key;
     include /etc/nginx/ssl_params;
 
     location / {

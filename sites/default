@@ -5,8 +5,8 @@ server {
     listen 443 ssl http2 default_server;
     listen [::]:443 ssl http2 default_server;
 
-    ssl_certificate /certs/www.pinshot.net_chain.pem;
-    ssl_certificate_key /certs/www.pinshot.net.key;
+    ssl_certificate /certs/pinshot.net_chain.pem;
+    ssl_certificate_key /certs/pinshot.net.key;
     include /etc/nginx/ssl_params;
 
     return 403;

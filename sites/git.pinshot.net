@@ -1,0 +1,23 @@
+upstream gogs {
+    server gogs:3000;
+}
+
+server {
+    include /etc/nginx/ssl_listen;
+
+    server_name git.pinshot.net;
+    
+    charset utf-8;
+
+    ssl_certificate /certs/pinshot.net_chain.pem;
+    ssl_certificate_key /certs/pinshot.net.key;
+    include /etc/nginx/ssl_params;
+
+    # disable any limits to avoid HTTP 413 for large image uploads
+    client_max_body_size 50m;
+
+    location / {
+        include /etc/nginx/proxy_params;
+        proxy_pass http://gogs;
+    }
+}

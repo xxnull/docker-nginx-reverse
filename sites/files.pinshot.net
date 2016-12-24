@@ -13,6 +13,14 @@ server {
     ssl_certificate_key /certs/pinshot.net.key;
     include /etc/nginx/ssl_params;
 
+    location /videos/ {
+        auth_basic "Registry realm";
+        auth_basic_user_file /credentials/videos.htpasswd;
+
+        include /etc/nginx/proxy_params;
+        proxy_pass http://files;
+    }
+
     location / {
         include /etc/nginx/proxy_params;
         proxy_pass http://files;

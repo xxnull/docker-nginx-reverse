@@ -15,8 +15,8 @@ server {
     
     charset utf-8;
 
-    ssl_certificate /certs/pinshot.net_chain.pem;
-    ssl_certificate_key /certs/pinshot.net.key;
+    ssl_certificate /certs/le/build.pinshot.net.crt;
+    ssl_certificate_key /certs/le/build.pinshot.net.key;
     include /etc/nginx/ssl_params;
 
     location / {

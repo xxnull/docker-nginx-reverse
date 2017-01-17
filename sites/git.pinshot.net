@@ -9,8 +9,8 @@ server {
     
     charset utf-8;
 
-    ssl_certificate /certs/pinshot.net_chain.pem;
-    ssl_certificate_key /certs/pinshot.net.key;
+    ssl_certificate /certs/le/git.pinshot.net.crt;
+    ssl_certificate_key /certs/le/git.pinshot.net.key;
     include /etc/nginx/ssl_params;
 
     # disable any limits to avoid HTTP 413 for large image uploads

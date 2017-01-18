@@ -1,8 +1,5 @@
 FROM cybe/ps-nginx-base:alpine35
 
-COPY configs/ssl_params configs/ssl_listen configs/proxy_params /etc/nginx/
-COPY sites/default sites/files.pinshot.net sites/www.pinshot.net sites/hub.pinshot.net sites/git.pinshot.net sites/build.pinshot.net /etc/nginx/sites/
-
 # Generate trusted certificates for OSCP stapling
 RUN apk --no-cache add --virtual .fetch-deps openssl html-xml-utils \
     && CERT=/etc/nginx/le-ca-certs.crt \
@@ -14,3 +11,6 @@ RUN apk --no-cache add --virtual .fetch-deps openssl html-xml-utils \
         | hxnormalize -x | hxselect -c "textarea[name=cert]" | sed -e 's/[\r ]//g' -e '1d' >> ${CERT} \
     && echo "-----END CERTIFICATE-----" >> ${CERT} \
     && apk del --purge .fetch-deps
+
+COPY configs/ssl_params configs/ssl_listen configs/proxy_params /etc/nginx/
+COPY sites/default sites/files.pinshot.net sites/www.pinshot.net sites/hub.pinshot.net sites/git.pinshot.net sites/build.pinshot.net /etc/nginx/sites/

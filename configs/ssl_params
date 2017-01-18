@@ -9,3 +9,5 @@ ssl_session_tickets off;
 ssl_stapling on;
 ssl_stapling_verify on;
 ssl_trusted_certificate le-ca-certs.crt;
+
+add_header Strict-Transport-Security "max-age=300; includeSubdomains; ";

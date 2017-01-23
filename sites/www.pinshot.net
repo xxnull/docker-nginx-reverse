@@ -3,7 +3,8 @@ upstream www {
 }
 
 server {
-    include /etc/nginx/ssl_listen;
+    listen 443 ssl http2;
+    listen [::]:443 ssl http2;
 
     server_name www.pinshot.net;
 
@@ -15,7 +16,8 @@ server {
 }
 
 server {
-    include /etc/nginx/ssl_listen;
+    listen 443 ssl http2;
+    listen [::]:443 ssl http2;
 
     server_name pinshot.net;
 

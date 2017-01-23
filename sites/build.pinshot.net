@@ -9,7 +9,8 @@ map $http_upgrade $connection_upgrade {
 }
 
 server {
-    include /etc/nginx/ssl_listen;
+    listen 443 ssl http2;
+    listen [::]:443 ssl http2;
 
     server_name build.pinshot.net;
     

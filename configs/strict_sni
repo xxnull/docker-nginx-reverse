@@ -1,9 +1,8 @@
-# disallow empty hostnames
 server {
-    listen 80 default_server;
-    listen [::]:80 default_server;
     listen 443 ssl http2 default_server;
     listen [::]:443 ssl http2 default_server;
+
+    server_name _;
 
     ssl_certificate /certs/le/pinshot.net.crt;
     ssl_certificate_key /certs/le/pinshot.net.key;

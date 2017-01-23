@@ -12,5 +12,6 @@ RUN apk --no-cache add --virtual .fetch-deps openssl html-xml-utils \
     && echo "-----END CERTIFICATE-----" >> ${CERT} \
     && apk del --purge .fetch-deps
 
-COPY configs/ssl_params configs/ssl_listen configs/proxy_params /etc/nginx/
-COPY sites/default sites/files.pinshot.net sites/www.pinshot.net sites/hub.pinshot.net sites/git.pinshot.net sites/build.pinshot.net /etc/nginx/sites/
+COPY configs/ssl_params configs/proxy_params /etc/nginx/
+COPY configs/strict_sni /etc/nginx/conf.d/
+COPY sites/files.pinshot.net sites/www.pinshot.net sites/hub.pinshot.net sites/git.pinshot.net sites/build.pinshot.net /etc/nginx/sites/

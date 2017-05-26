@@ -1,4 +1,4 @@
-FROM cybe/ps-nginx-base:alpine35
+FROM cybe/ps-nginx-base:alpine36
 
 # Generate trusted certificates for OSCP stapling
 RUN apk --no-cache add --virtual .fetch-deps openssl html-xml-utils \

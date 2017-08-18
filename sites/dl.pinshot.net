@@ -24,12 +24,23 @@ server {
     ssl_certificate_key /certs/le/dl.pinshot.net.key;
     include /etc/nginx/ssl_params;
 
+    location /files {
+        include /etc/nginx/proxy_params;
+        proxy_pass http://aria2-web;
+    }
+
     location / {
+        auth_basic "Registry realm";
+        auth_basic_user_file /credentials/dl.htpasswd;
+
         include /etc/nginx/proxy_params;
         proxy_pass http://aria2-web;
     }
 
     location ~* /jsonrpc {
+        auth_basic "Registry realm";
+        auth_basic_user_file /credentials/dl.htpasswd;
+        
         include /etc/nginx/proxy_params;
         proxy_pass http://aria2-rpc;
 
